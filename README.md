@@ -1,9 +1,5 @@
 # Aula 3 — UML: Máquina de Estados e Atividades
 
-Material de estudo e consulta rápida sobre diagramas de máquina de estados, atividades e sequência.
-
-> **Curso:** Arquitetura de Sistemas e Microsserviços · **Unidade 1 · Aula 3** · Prof. Nataniel Paiva  
-> **Origem do conteúdo:** slides da Aula 3 — *UML: Máquina de Estados e Atividades*. Os exercícios extras estão identificados como exemplos adicionais.
 
 ## Por onde começar
 

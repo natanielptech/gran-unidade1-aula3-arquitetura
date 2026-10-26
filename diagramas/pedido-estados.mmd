@@ -1,0 +1,11 @@
+stateDiagram-v2
+    direction LR
+    [*] --> Criado
+    Criado --> AguardandoPagamento: criarPedido
+    Criado --> Cancelado: cancelar
+    AguardandoPagamento --> Pago: pagamentoAprovado
+    AguardandoPagamento --> Cancelado: pagamentoRecusado / timeout
+    Pago --> Enviado: despachar
+    Enviado --> Entregue: confirmarEntrega
+    Entregue --> [*]
+    Cancelado --> [*]

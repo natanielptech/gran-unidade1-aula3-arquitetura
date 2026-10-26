@@ -1,0 +1,8 @@
+sequenceDiagram
+    participant Processo as Processo de Pedido
+    participant Estoque as EstoqueService
+    participant Pag as PagamentoService
+    Processo->>Estoque: reservarItens(pedido)
+    Estoque-->>Processo: itensReservados
+    Processo->>Pag: autorizarPagamento(pedido)
+    Pag-->>Processo: pagamentoAprovado

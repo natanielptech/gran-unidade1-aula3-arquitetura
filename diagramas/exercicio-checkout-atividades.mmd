@@ -1,0 +1,16 @@
+stateDiagram-v2
+    state carrinho <<choice>>
+    state pagamento <<choice>>
+
+    [*] --> ReceberCarrinho
+    ReceberCarrinho --> ValidarCarrinho
+    ValidarCarrinho --> carrinho
+    carrinho --> InformarProblema: carrinho inválido
+    InformarProblema --> [*]
+    carrinho --> CalcularTotal: carrinho válido
+    CalcularTotal --> ProcessarPagamento
+    ProcessarPagamento --> pagamento
+    pagamento --> ConfirmarPedido: pagamento aprovado
+    pagamento --> InformarRecusa: pagamento recusado
+    ConfirmarPedido --> [*]
+    InformarRecusa --> [*]

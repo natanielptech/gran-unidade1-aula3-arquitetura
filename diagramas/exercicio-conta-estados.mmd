@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Ativa
+    Ativa --> Bloqueada: bloquear
+    Bloqueada --> Ativa: desbloquear
+    Ativa --> Encerrada: encerrar
+    Bloqueada --> Encerrada: encerrar
+    Encerrada --> [*]

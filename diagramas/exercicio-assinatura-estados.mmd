@@ -1,0 +1,9 @@
+stateDiagram-v2
+    [*] --> Trial
+    Trial --> Ativa: confirmarAssinatura
+    Trial --> Cancelada: cancelar
+    Ativa --> Suspensa: falhaDePagamento
+    Suspensa --> Ativa: regularizarPagamento
+    Ativa --> Cancelada: cancelar
+    Suspensa --> Cancelada: cancelar
+    Cancelada --> [*]

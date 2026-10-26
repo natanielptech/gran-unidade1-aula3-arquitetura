@@ -1,0 +1,14 @@
+flowchart TD
+    I((Início)) --> A[Receber pedido]
+    A --> B[Verificar estoque]
+    B --> D{Estoque suficiente?}
+    D -- não --> N[Notificar indisponibilidade] --> F1((Fim))
+    D -- sim --> R[Reservar itens] --> P[Processar pagamento] --> NF[Emitir nota fiscal]
+    NF --> FK[[FORK]]
+    subgraph Paralelo
+        FK --> C[Notificar cliente]
+        FK --> L[Atualizar painel logístico]
+    end
+    C --> JN[[JOIN]]
+    L --> JN
+    JN --> F2((Fim))

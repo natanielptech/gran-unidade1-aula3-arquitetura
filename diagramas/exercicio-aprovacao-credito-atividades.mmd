@@ -1,0 +1,22 @@
+stateDiagram-v2
+    state documentos <<choice>>
+    state resultado <<choice>>
+    state verificacoes <<fork>>
+    state sincronizar <<join>>
+
+    [*] --> ReceberSolicitacao
+    ReceberSolicitacao --> ConferirDocumentos
+    ConferirDocumentos --> documentos
+    documentos --> SolicitarDocumentos: documentação incompleta
+    SolicitarDocumentos --> [*]
+    documentos --> AnalisarCredito: documentação completa
+    AnalisarCredito --> verificacoes
+    verificacoes --> ConsultarRisco
+    verificacoes --> ValidarIdentidade
+    ConsultarRisco --> sincronizar
+    ValidarIdentidade --> sincronizar
+    sincronizar --> resultado
+    resultado --> ComunicarAprovacao: verificações aprovadas
+    resultado --> ComunicarRecusa: alguma verificação reprovada
+    ComunicarAprovacao --> [*]
+    ComunicarRecusa --> [*]

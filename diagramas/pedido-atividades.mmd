@@ -1,0 +1,19 @@
+stateDiagram-v2
+    state decisao <<choice>>
+    state fork_state <<fork>>
+    state join_state <<join>>
+
+    [*] --> ReceberPedido
+    ReceberPedido --> VerificarEstoque
+    VerificarEstoque --> decisao
+    decisao --> NotificarIndisponibilidade: estoque insuficiente
+    NotificarIndisponibilidade --> [*]
+    decisao --> ReservarItens: estoque suficiente
+    ReservarItens --> ProcessarPagamento
+    ProcessarPagamento --> EmitirNotaFiscal
+    EmitirNotaFiscal --> fork_state
+    fork_state --> NotificarCliente
+    fork_state --> AtualizarPainelLogistico
+    NotificarCliente --> join_state
+    AtualizarPainelLogistico --> join_state
+    join_state --> [*]
